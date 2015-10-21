@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Harp Server</title>
+    <style>
+      #holder {
+        border: 4px dashed #ccc;
+        margin: 0 auto;
+        height: 300px;
+        color: #ccc;
+        font-size: 40px;
+        line-height: 300px;
+        text-align: center;
+        -webkit-user-select: none;
+      }
+      #holder.hover {
+        border: 4px dashed #999;
+        color: #eee;
+      }
+    </style>
+  </head>
+  <body>
+    <script>
+      document.onclick = function(e) {
+        e.preventDefault();
+        if (e.target.tagName == 'A')
+          require('shell').openExternal(e.target.href);
+        return false;
+      };
+      document.ondragover = document.ondrop = function(e) {
+        e.preventDefault();
+        return false;
+      };
+    </script>
+
+    <div id="holder">
+      Drag your app here to run it
+    </div>
+
+    <script>
+      var harp = require("harp");
+      var path = require("path");
+      var holder = document.getElementById('holder');
+      holder.ondragover = function () {
+        this.className = 'hover';
+        return false;
+      };
+      holder.ondragleave = holder.ondragend = function () {
+        this.className = '';
+        return false;
+      };
+      holder.ondrop = function (e) {
+        this.className = '';
+        e.preventDefault();
+        var file = e.dataTransfer.files[0];
+        var projectPath = path.resolve(process.cwd(), file.path || "");
+        var ip          = '0.0.0.0';
+        var port        = 9000;
+        harp.server(projectPath, { ip: ip, port: port }, function() {
+          var address = '';
+          if (ip == '0.0.0.0' || ip == '127.0.0.1') {
+            address = 'localhost';
+          } else {
+            address = ip;
+          }
+          var hostUrl = "http://" + address + ":" + port + "/";
+          console.log("Your server is listening at " + hostUrl);
+        });
+        return false;
+      };
+    </script>
+  </body>
+</html>

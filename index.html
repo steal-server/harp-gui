@@ -3,72 +3,192 @@
   <head>
     <meta charset="UTF-8">
     <title>Harp Server</title>
+    <link rel="stylesheet" href="style.css">
     <style>
-      #holder {
-        border: 4px dashed #ccc;
-        margin: 0 auto;
-        height: 300px;
-        color: #ccc;
-        font-size: 40px;
-        line-height: 300px;
-        text-align: center;
-        -webkit-user-select: none;
-      }
-      #holder.hover {
-        border: 4px dashed #999;
-        color: #eee;
-      }
+    * { box-sizing: border-box; }
+    html { background: #3E5E6B; }
+    html, body {
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      font-family: Open-Sans, sans-serif;
+    }
+    body {
+      display: flex;
+      flex-direction: column;
+    }
+    h1 {
+      margin: 0 0 40px 0;
+      color: #4F727F;
+    }
+    #splashscreen {
+      background: #67919e;
+      padding: 40px;
+      width: 100%;
+      height: 100%;
+      display: table;
+      flex: 1;
+    }
+    #splashscreen .container {
+      display: table-cell;
+      vertical-align: middle;
+      text-align: center;
+    }
+    #splashscreen img { width: 110px; }
+    #server-status {
+      flex: 0;
+      overflow: hidden;
+      text-align: center;
+    }
+    #holder {
+      background: #638996;
+      border: 3px dashed #82a4ae;
+      margin: 0 auto;
+      text-align: center;
+      border-radius: 5px;
+      -webkit-user-select: none;
+      display: inline-block;
+      padding: 40px;
+    }
+    #holder.hover { /* TODO: hover state */ }
+    .label {
+      color: #3E575F;
+      margin: 40px 0;
+    }
+    body.server-on #server-status {
+      flex: 1;
+      overflow: visible;
+      padding: 40px 0;
+    }
+    body.server-on #splashscreen {
+      flex: none;
+      height: auto;
+      padding: 20px;
+    }
+    body.server-on #holder { padding: 20px; }
+    body.server-on #splashscreen img { width: 50px; }
+    body.server-on #splashscreen h1,
+    body.server-on #splashscreen .label { display: none; }
+    #app-path {
+      color: #4F727F;
+      font-size: 20px;
+      padding: 20px;
+    }
+    #server-status .title {
+      color: #67919E;
+      text-transform: uppercase;
+      font-size: 10px;
+    }
+    #server-url a {
+      color: white;
+      font-size: 24px;
+      text-decoration: none;
+      display: block;
+      padding: 10px;
+    }
+    #server-url a:hover { color: white; }
+    .controls { padding: 20px; }
+    .controls a {
+      background: #67919e;
+      border-radius: 4px;
+      margin: 20px;
+    }
+    .visual { width: 100%; }
+    .footerbar {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+    }
+    .left { float: left; }
+    .right { float: right; }
+    .footerbar {
+      text-transform: uppercase;
+      font-size: 10px;
+      padding: 5px;
+    }
+    .footerbar a {
+      color: #3E575F;
+      text-decoration: none;
+      padding: 5px;
+    }
     </style>
   </head>
   <body>
     <script>
-      document.onclick = function(e) {
-        e.preventDefault();
-        if (e.target.tagName == 'A')
-          require('shell').openExternal(e.target.href);
-        return false;
-      };
-      document.ondragover = document.ondrop = function(e) {
-        e.preventDefault();
-        return false;
-      };
+    document.onclick = function(e) {
+      e.preventDefault();
+      if (e.target.tagName == 'A')
+        require('shell').openExternal(e.target.href);
+      return false;
+    };
+    document.ondragover = document.ondrop = function(e) {
+      e.preventDefault();
+      return false;
+    };
     </script>
 
-    <div id="holder">
-      Drag your app here to run it
+    <div id="server-status">
+      <div id="app-path"></div>
+      <img class="visual" src="images/diagram.png">
+      <div class="info">
+        <div class="title">Your server is listening at</div>
+        <div id="server-url"></div>
+      </div>
+      <!-- <div class="controls">
+        <a id="launch">Launch</a>
+        <a id="stop">Stop</a>
+      </div> -->
     </div>
 
+    <div id="splashscreen">
+      <div class="container">
+        <h1>Server is not running</h1>
+        <div id="holder">
+          <img src="images/drag-folder.png">
+        </div>
+        <div class="label">Drag a Harp app folder here to get started.</div>
+      </div>
+    </div>
+
+    <footer class="footerbar">
+      <div class="left"><a href="http://harpjs.com/faq">FAQ</a> | <a href="https://github.com/alexgleason/harp-gui">GitHub</a></div>
+      <div class="right"><a href="http://harpjs.com/">About Harp</a></div>
+    </footer>
+
     <script>
-      var harp = require("harp");
-      var path = require("path");
-      var holder = document.getElementById('holder');
-      holder.ondragover = function () {
-        this.className = 'hover';
-        return false;
-      };
-      holder.ondragleave = holder.ondragend = function () {
-        this.className = '';
-        return false;
-      };
-      holder.ondrop = function (e) {
-        this.className = '';
-        e.preventDefault();
-        var file = e.dataTransfer.files[0];
-        var projectPath = path.resolve(process.cwd(), file.path || "");
-        var ip          = '0.0.0.0';
-        var port        = 9000;
-        harp.server(projectPath, { ip: ip, port: port }, function() {
-          var address = '';
-          if (ip == '0.0.0.0' || ip == '127.0.0.1') {
-            address = 'localhost';
-          } else {
-            address = ip;
-          }
-          var hostUrl = "http://" + address + ":" + port + "/";
-          console.log("Your server is listening at " + hostUrl);
-        });
-        return false;
-      };
+    var harp = require("harp");
+    var path = require("path");
+    var enableDestroy = require("server-destroy");
+    var holder = document.getElementById('holder');
+    var server = null;
+    var port = 0;
+
+    holder.ondragover = function () {
+      this.className = 'hover';
+      return false;
+    };
+    holder.ondragleave = holder.ondragend = function () {
+      this.className = '';
+      return false;
+    };
+    holder.ondrop = function (e) {
+      this.className = '';
+      e.preventDefault();
+      var file = e.dataTransfer.files[0];
+      var projectPath = path.resolve(process.cwd(), file.path || "");
+
+      if (server !== null) server.destroy();
+      harp.server(projectPath, { ip: '0.0.0.0', port: port }, function() {
+        server = this;
+        enableDestroy(this);
+        port = this.address().port;
+        var url = "http://localhost:" + port + "/";
+        document.getElementById('app-path').innerHTML = projectPath;
+        document.getElementById('server-url').innerHTML = '<a href="'+url+'">'+url+'</a>';
+        document.body.className = 'server-on';
+      });
+      return false;
+    };
     </script>
   </body>
 </html>

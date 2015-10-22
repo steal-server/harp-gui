@@ -1,14 +1,14 @@
 {
   "name": "harp-gui",
   "version": "1.0.0",
-  "description": "",
+  "description": "Static web server utility for front-end development.",
   "main": "main.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+  "repository": "https://github.com/alexgleason/harp-gui",
   "author": "Alex Gleason",
   "license": "GPL",
-  "devDependencies": {
-    "harp": "^0.19.0"
-  }
+  "dependencies": {
+    "harp": "^0.19.0",
+    "server-destroy": "^1.0.1"
+  },
+  "readmeFilename": "README.md"
 }

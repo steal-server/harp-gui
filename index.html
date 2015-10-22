@@ -11,7 +11,7 @@
       width: 100%;
       height: 100%;
       margin: 0;
-      font-family: Open-Sans, sans-serif;
+      font-family: "Open Sans", sans-serif;
     }
     body {
       display: flex;
@@ -26,24 +26,32 @@
       padding: 40px;
       width: 100%;
       height: 100%;
-      display: table;
-      flex: 1;
+      display: flex;
+	  align-items: center;
+	  justify-content: center;
+	  position:absolute;
+	  bottom:0;
+	  left:0;
+	  transition:all 1s cubic-bezier(1.000, -0.530, 0.405, 1.425);
+	  z-index: 200;
     }
     #splashscreen .container {
       display: table-cell;
       vertical-align: middle;
       text-align: center;
     }
-    #splashscreen img { width: 110px; }
+    #splashscreen img { width: 100px; }
     #server-status {
-      flex: 0;
-      overflow: hidden;
-      text-align: center;
+		min-height:0%;
+		transition:all 1s ease-in-out;//all 1s cubic-bezier(1.000, -0.530, 0.405, 1.425);
+		overflow: hidden;
+		text-align: center;
+		width: 100%;
+		padding-top: 20%;
     }
     #holder {
       width: 190px;
       height: 190px;
-      background: #638996;
       margin: 0 auto;
       text-align: center;
       border-radius: 5px;
@@ -68,17 +76,14 @@
     	animation: entrance 1s 1;
     }
     body.server-on #server-status {
-      flex: 1;
-      overflow: visible;
-      padding: 40px 0;
+    	min-height: 100%;
+      	overflow: hidden;
     }
     body.server-on #splashscreen {
-      flex: none;
-      height: auto;
-      padding: 20px;
+      	height: 220px;
+		animation: elasticborder 1s 1;
     }
     body.server-on #holder { padding: 20px; }
-    body.server-on #splashscreen img { width: 50px; }
     body.server-on #splashscreen h1,
     body.server-on #splashscreen .label { display: none; }
     #app-path {
@@ -105,23 +110,51 @@
       border-radius: 4px;
       margin: 20px;
     }
-    .visual { width: 100%; }
+    .visual {
+    	width: 100%;
+		background-image: url(images/wave.svg);
+		/* background-position: left center, right center; */
+		background-size: 100% 100%;
+		background-repeat: no-repeat;
+		position:relative;
+    }
+    .folderopen {
+    	width: 120px;
+    	position: relative;
+    	z-index: 101;
+    }
+    .bluline{
+    	top: 0;
+		left: 0;
+		position: absolute;
+		width: 5px;
+		height: 100%;
+		background: #3E5E6B;
+		animation: dataanimation 5s infinite ease-in;
+		z-index: 100;
+    }
     .footerbar {
       position: absolute;
       bottom: 0;
       width: 100%;
+      z-index: 300;
     }
     .left { float: left; }
     .right { float: right; }
     .footerbar {
       text-transform: uppercase;
-      font-size: 10px;
-      padding: 5px;
+      font-size: 11px;
+      font-weight:bold;
+      padding: 15px;
+      color: #82a4ae;
     }
     .footerbar a {
-      color: #3E575F;
+      color: #4F727F;
       text-decoration: none;
       padding: 5px;
+    }
+    .footerbar a:hover{
+      color: #3E575F;
     }
     @keyframes border-dance {
 		0% {
@@ -150,7 +183,28 @@
 			opacity: 1;
 	  	}
 	}
-
+	@keyframes dataanimation{
+		0% {
+			left: 0;
+	  	}
+	  	100% {
+			left: 100%;
+	  	}
+	}
+	@keyframes elasticborder{
+		0% {
+			border-top-left-radius: 0% 0%;
+    		border-top-right-radius: 0% 0%;
+	  	}
+	  	50% {
+			border-top-left-radius: 50% 30%;
+    		border-top-right-radius: 50% 30%;
+	  	}
+	  	100% {
+			border-top-left-radius: 0% 0%;
+    		border-top-right-radius: 0% 0%;
+	  	}
+	}
     </style>
   </head>
   <body>
@@ -168,16 +222,21 @@
     </script>
 
     <div id="server-status">
-      <div id="app-path"></div>
-      <img class="visual" src="images/diagram.png">
-      <div class="info">
-        <div class="title">Your server is listening at</div>
-        <div id="server-url"></div>
-      </div>
-      <!-- <div class="controls">
+    	<div class="data-status">
+		  <div id="app-path"></div>
+		  <div class="visual">
+			<div class="bluline"></div>
+			<img class="folderopen" src="images/open-folder.svg">
+		  </div>
+		  <div class="info">
+			<div class="title">Your server is listening at</div>
+			<div id="server-url"></div>
+		  </div>
+		   <!-- <div class="controls">
         <a id="launch">Launch</a>
         <a id="stop">Stop</a>
       </div> -->
+		</div>
     </div>
 
     <div id="splashscreen">

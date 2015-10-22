@@ -41,19 +41,31 @@
       text-align: center;
     }
     #holder {
+      width: 190px;
+      height: 190px;
       background: #638996;
-      border: 3px dashed #82a4ae;
       margin: 0 auto;
       text-align: center;
       border-radius: 5px;
       -webkit-user-select: none;
-      display: inline-block;
-      padding: 40px;
+      display: flex;
+	  align-items: center;
+	  justify-content: center;
+      background: linear-gradient(90deg, #82a4ae 50%, transparent 50%), linear-gradient(90deg, #82a4ae 50%, transparent 50%), linear-gradient(0deg, #82a4ae 50%, transparent 50%), linear-gradient(0deg, #82a4ae 50%, transparent 50%);
+      background-repeat: repeat-x, repeat-x, repeat-y, repeat-y;
+	  background-size: 16px 4px, 16px 4px, 4px 16px, 4px 16px;
+	  background-position: 0px 0px, 186px 186px, 0px 186px, 186px 0px;
+	  animation: entopacity 2s 1;
     }
-    #holder.hover { /* TODO: hover state */ }
+    #holder.hover {
+        animation: border-dance 6s infinite linear;
+    }
     .label {
       color: #3E575F;
       margin: 40px 0;
+    }
+    #holder img{
+    	animation: entrance 1s 1;
     }
     body.server-on #server-status {
       flex: 1;
@@ -111,6 +123,34 @@
       text-decoration: none;
       padding: 5px;
     }
+    @keyframes border-dance {
+		0% {
+			background-position: 0px 0px, 186px 186px, 0px 186px, 186px 0px;
+		}
+		100% {
+			background-position: 186px 0px, 0px 186px, 0px 0px, 186px 186px;
+		}
+	}
+	@keyframes entrance {
+	  0% {
+		height: 0px;
+	  }
+	  90% {
+		height: 130px;
+	  }
+	  100% {
+		height: 110px;
+	  }
+	}
+	@keyframes entopacity{
+		0% {
+			opacity: 0;
+	  	}
+	  	100% {
+			opacity: 1;
+	  	}
+	}
+
     </style>
   </head>
   <body>
@@ -144,7 +184,7 @@
       <div class="container">
         <h1>Server is not running</h1>
         <div id="holder">
-          <img src="images/drag-folder.png">
+          <img src="images/drag-folder.svg">
         </div>
         <div class="label">Drag a Harp app folder here to get started.</div>
       </div>

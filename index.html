@@ -115,10 +115,11 @@
   </head>
   <body>
     <script>
+    var remote = require("remote");
     document.onclick = function(e) {
       e.preventDefault();
       if (e.target.tagName == 'A')
-        require('shell').openExternal(e.target.href);
+        remote.require('shell').openExternal(e.target.href);
       return false;
     };
     document.ondragover = document.ondrop = function(e) {

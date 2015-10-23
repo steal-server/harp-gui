@@ -4,114 +4,6 @@
     <meta charset="UTF-8">
     <title>Harp Server</title>
     <link rel="stylesheet" href="style.css">
-    <style>
-    * { box-sizing: border-box; }
-    html { background: #3E5E6B; }
-    html, body {
-      width: 100%;
-      height: 100%;
-      margin: 0;
-      font-family: Open-Sans, sans-serif;
-    }
-    body {
-      display: flex;
-      flex-direction: column;
-    }
-    h1 {
-      margin: 0 0 40px 0;
-      color: #4F727F;
-    }
-    #splashscreen {
-      background: #67919e;
-      padding: 40px;
-      width: 100%;
-      height: 100%;
-      display: table;
-      flex: 1;
-    }
-    #splashscreen .container {
-      display: table-cell;
-      vertical-align: middle;
-      text-align: center;
-    }
-    #splashscreen img { width: 110px; }
-    #server-status {
-      flex: 0;
-      overflow: hidden;
-      text-align: center;
-    }
-    #holder {
-      background: #638996;
-      border: 3px dashed #82a4ae;
-      margin: 0 auto;
-      text-align: center;
-      border-radius: 5px;
-      -webkit-user-select: none;
-      display: inline-block;
-      padding: 40px;
-    }
-    #holder.hover { /* TODO: hover state */ }
-    .label {
-      color: #3E575F;
-      margin: 40px 0;
-    }
-    body.server-on #server-status {
-      flex: 1;
-      overflow: visible;
-      padding: 40px 0;
-    }
-    body.server-on #splashscreen {
-      flex: none;
-      height: auto;
-      padding: 20px;
-    }
-    body.server-on #holder { padding: 20px; }
-    body.server-on #splashscreen img { width: 50px; }
-    body.server-on #splashscreen h1,
-    body.server-on #splashscreen .label { display: none; }
-    #app-path {
-      color: #4F727F;
-      font-size: 20px;
-      padding: 20px;
-    }
-    #server-status .title {
-      color: #67919E;
-      text-transform: uppercase;
-      font-size: 10px;
-    }
-    #server-url a {
-      color: white;
-      font-size: 24px;
-      text-decoration: none;
-      display: block;
-      padding: 10px;
-    }
-    #server-url a:hover { color: white; }
-    .controls { padding: 20px; }
-    .controls a {
-      background: #67919e;
-      border-radius: 4px;
-      margin: 20px;
-    }
-    .visual { width: 100%; }
-    .footerbar {
-      position: absolute;
-      bottom: 0;
-      width: 100%;
-    }
-    .left { float: left; }
-    .right { float: right; }
-    .footerbar {
-      text-transform: uppercase;
-      font-size: 10px;
-      padding: 5px;
-    }
-    .footerbar a {
-      color: #3E575F;
-      text-decoration: none;
-      padding: 5px;
-    }
-    </style>
   </head>
   <body>
     <script>
@@ -129,23 +21,28 @@
     </script>
 
     <div id="server-status">
-      <div id="app-path"></div>
-      <img class="visual" src="images/diagram.png">
-      <div class="info">
-        <div class="title">Your server is listening at</div>
-        <div id="server-url"></div>
-      </div>
-      <!-- <div class="controls">
+    	<div class="data-status">
+		  <div id="app-path"></div>
+		  <div class="visual">
+			<div class="bluline"></div>
+			<img class="folderopen" src="images/open-folder.svg">
+		  </div>
+		  <div class="info">
+			<div class="title">Your server is listening at</div>
+			<div id="server-url"></div>
+		  </div>
+		   <!-- <div class="controls">
         <a id="launch">Launch</a>
         <a id="stop">Stop</a>
       </div> -->
+		</div>
     </div>
 
     <div id="splashscreen">
       <div class="container">
         <h1>Server is not running</h1>
         <div id="holder">
-          <img src="images/drag-folder.png">
+          <img src="images/drag-folder.svg">
         </div>
         <div class="label">Drag a Harp app folder here to get started.</div>
       </div>

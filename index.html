@@ -3,39 +3,38 @@
   <head>
     <meta charset="UTF-8">
     <title>Harp Server</title>
-    <link rel="stylesheet" href="style.css">
+    <link href="style.css" rel="stylesheet">
   </head>
   <body>
     <script>
-    var remote = require("remote");
-    document.onclick = function(e) {
-      e.preventDefault();
-      if (e.target.tagName == 'A')
-        remote.require('shell').openExternal(e.target.href);
-      return false;
-    };
-    document.ondragover = document.ondrop = function(e) {
-      e.preventDefault();
-      return false;
-    };
+      var remote = require("remote");
+      document.onclick = function(e) {
+        e.preventDefault();
+        if (e.target.tagName == 'A')
+          remote.require('shell').openExternal(e.target.href);
+        return false;
+      };
+      document.ondragover = document.ondrop = function(e) {
+        e.preventDefault();
+        return false;
+      };
     </script>
 
     <div id="server-status">
-    	<div class="data-status">
-		  <div id="app-path"></div>
-		  <div class="visual">
-			<div class="bluline"></div>
-			<img class="folderopen" src="images/open-folder.svg">
-		  </div>
-		  <div class="info">
-			<div class="title">Your server is listening at</div>
-			<div id="server-url"></div>
-		  </div>
-		   <!-- <div class="controls">
-        <a id="launch">Launch</a>
-        <a id="stop">Stop</a>
-      </div> -->
-		</div>
+      <div class="data-status">
+        <div id="app-path"></div>
+        <div class="visual">
+          <div class="bluline"></div>
+          <img class="folderopen" src="images/open-folder.svg">
+        </div>
+        <div class="info">
+          <div class="title">Your server is listening at</div>
+          <div id="server-url"></div>
+        </div>
+        <div class="controls">
+          <a id="launch">View in Browser</a>
+        </div>
+      </div>
     </div>
 
     <div id="splashscreen">
@@ -49,44 +48,53 @@
     </div>
 
     <footer class="footerbar">
-      <div class="left"><a href="http://harpjs.com/faq">FAQ</a> | <a href="https://github.com/alexgleason/harp-gui">GitHub</a></div>
-      <div class="right"><a href="http://harpjs.com/">About Harp</a></div>
+      <div class="left">
+        <a href="http://harpjs.com/faq">FAQ</a> | <a href="https://github.com/alexgleason/harp-gui">GitHub</a>
+      </div>
+      <div class="right">
+        <a href="http://harpjs.com/">About Harp</a>
+      </div>
     </footer>
 
     <script>
-    var harp = require("harp");
-    var path = require("path");
-    var enableDestroy = require("server-destroy");
-    var holder = document.getElementById('holder');
-    var server = null;
-    var port = 0;
+      var harp = require("harp");
+      var path = require("path");
+      var enableDestroy = require("server-destroy");
+      var holder = document.getElementById('holder');
+      var server = null;
+      var port = 0;
 
-    holder.ondragover = function () {
-      this.className = 'hover';
-      return false;
-    };
-    holder.ondragleave = holder.ondragend = function () {
-      this.className = '';
-      return false;
-    };
-    holder.ondrop = function (e) {
-      this.className = '';
-      e.preventDefault();
-      var file = e.dataTransfer.files[0];
-      var projectPath = path.resolve(process.cwd(), file.path || "");
+      holder.ondragover = function() {
+        this.className = 'hover';
+        return false;
+      };
+      holder.ondragleave = holder.ondragend = function() {
+        this.className = '';
+        return false;
+      };
+      holder.ondrop = function(e) {
+        this.className = '';
+        e.preventDefault();
+        var file = e.dataTransfer.files[0];
+        var projectPath = path.resolve(process.cwd(), file.path || "");
 
-      if (server !== null) server.destroy();
-      harp.server(projectPath, { ip: '0.0.0.0', port: port }, function() {
-        server = this;
-        enableDestroy(this);
-        port = this.address().port;
-        var url = "http://localhost:" + port + "/";
-        document.getElementById('app-path').innerHTML = projectPath;
-        document.getElementById('server-url').innerHTML = '<a href="'+url+'">'+url+'</a>';
-        document.body.className = 'server-on';
-      });
-      return false;
-    };
+        if (server !== null)
+          server.destroy();
+        harp.server(projectPath, {
+            ip: '0.0.0.0',
+            port: port
+          }, function() {
+            server = this;
+            enableDestroy(this);
+            port = this.address().port;
+            var url = "http://localhost:" + port + "/";
+            document.getElementById('app-path').innerHTML = projectPath;
+            document.getElementById('launch').href = url;
+            document.getElementById('server-url').innerHTML = '<a href="' + url + '">' + url + '</a>';
+            document.body.className = 'server-on';
+          });
+        return false;
+      };
     </script>
   </body>
 </html>

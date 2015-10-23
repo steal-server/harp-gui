@@ -118,17 +118,22 @@ body.server-on #splashscreen h1, body.server-on #splashscreen .label {
   color: white;
 }
 .controls {
-  padding: 20px;
+  margin: 40px;
 }
-.controls a {
+.controls a, .controls button {
   background: #67919e;
   border-radius: 4px;
-  margin: 20px;
+  margin: 0 10px;
+  padding: 15px;
+  color: #3E5E6B;
+  text-decoration: none;
+}
+#stop {
+  background: #83596C;
 }
 .visual {
   width: 100%;
-  background-image: url(images/wave.svg);
-  /* background-position: left center, right center; */
+  background-image: url('images/wave.svg');
   background-size: 100% 100%;
   background-repeat: no-repeat;
   position: relative;

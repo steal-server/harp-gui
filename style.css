@@ -103,6 +103,9 @@ body.server-on #splashscreen h1, body.server-on #splashscreen .label {
   font-size: 20px;
   padding: 20px;
 }
+#app-path .highlighted {
+  color: #8C9EA6;
+}
 #server-status .title {
   color: #67919E;
   text-transform: uppercase;

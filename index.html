@@ -65,6 +65,15 @@
       var server = null;
       var port = 0;
 
+      function highlightLastPathDirectory(filename) {
+        var i = filename.lastIndexOf(path.sep) + 1;
+        var html = filename.substring(0, i);
+        html += '<span class="highlighted">';
+        html += filename.substring(i, filename.length);
+        html += '</span>';
+        return html;
+      }
+
       function startAppServer(appPath) {
         var appPath = path.resolve(process.cwd(), appPath || "");
 
@@ -78,7 +87,7 @@
             enableDestroy(this);
             port = this.address().port;
             var url = "http://localhost:" + port + "/";
-            document.getElementById('app-path').innerHTML = appPath;
+            document.getElementById('app-path').innerHTML = highlightLastPathDirectory(appPath);
             document.getElementById('launch').href = url;
             document.getElementById('server-url').innerHTML = '<a href="' + url + '">' + url + '</a>';
             document.body.className = 'server-on';
@@ -90,6 +99,7 @@
           title: 'Choose an app folder',
           properties: [ 'openDirectory' ]
         }, function(filepaths) {
+          if (typeof filepaths == 'undefined') return;
           var appPath = filepaths[0];
           startAppServer(appPath);
         });

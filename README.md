@@ -22,7 +22,7 @@ to install the project dependencies. Now just run `electron .` in this directory
 License
 =======
 
-Copyright © 2015 Alex Gleason
+Copyright © 2015 Harp GUI Contributors
 
 This software is licensed under GPLv3. See the `LICENSE` file for the complete license. Note that Harp is © Chloi Inc.
 

@@ -61,6 +61,7 @@
     <script>
       var harp = require("harp");
       var path = require("path");
+      var fs = require("fs");
       var enableDestroy = require("server-destroy");
       var dialog = remote.require('dialog');
       var holder = document.getElementById('holder');
@@ -119,6 +120,16 @@
         this.className = '';
         e.preventDefault();
         var file = e.dataTransfer.files[0].path;
+        if(!fs.lstatSync(file).isDirectory()) {
+          dialog.showMessageBox({
+            type: 'warning',
+            buttons: ['OK'],
+            title: "That won't work",
+            message: 'You dropped a file, but you must drop an app folder.',
+            cancelId: 0
+          });
+          return false;
+        }
         startAppServer(file);
         return false;
       };

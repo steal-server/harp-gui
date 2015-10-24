@@ -60,10 +60,40 @@
       var harp = require("harp");
       var path = require("path");
       var enableDestroy = require("server-destroy");
+      var dialog = remote.require('dialog');
       var holder = document.getElementById('holder');
       var server = null;
       var port = 0;
 
+      function startAppServer(appPath) {
+        var appPath = path.resolve(process.cwd(), appPath || "");
+
+        if (server !== null)
+          server.destroy();
+        harp.server(appPath, {
+            ip: '0.0.0.0',
+            port: port
+          }, function() {
+            server = this;
+            enableDestroy(this);
+            port = this.address().port;
+            var url = "http://localhost:" + port + "/";
+            document.getElementById('app-path').innerHTML = appPath;
+            document.getElementById('launch').href = url;
+            document.getElementById('server-url').innerHTML = '<a href="' + url + '">' + url + '</a>';
+            document.body.className = 'server-on';
+          });
+      }
+
+      holder.onclick = function() {
+        dialog.showOpenDialog({
+          title: 'Choose an app folder',
+          properties: [ 'openDirectory' ]
+        }, function(filepaths) {
+          var appPath = filepaths[0];
+          startAppServer(appPath);
+        });
+      }
       holder.ondragover = function() {
         this.className = 'hover';
         return false;
@@ -75,24 +105,8 @@
       holder.ondrop = function(e) {
         this.className = '';
         e.preventDefault();
-        var file = e.dataTransfer.files[0];
-        var projectPath = path.resolve(process.cwd(), file.path || "");
-
-        if (server !== null)
-          server.destroy();
-        harp.server(projectPath, {
-            ip: '0.0.0.0',
-            port: port
-          }, function() {
-            server = this;
-            enableDestroy(this);
-            port = this.address().port;
-            var url = "http://localhost:" + port + "/";
-            document.getElementById('app-path').innerHTML = projectPath;
-            document.getElementById('launch').href = url;
-            document.getElementById('server-url').innerHTML = '<a href="' + url + '">' + url + '</a>';
-            document.body.className = 'server-on';
-          });
+        var appPath = e.dataTransfer.files[0].path;
+        startAppServer(appPath);
         return false;
       };
     </script>

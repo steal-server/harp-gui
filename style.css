@@ -18,6 +18,69 @@ h1 {
   margin: 0 0 40px 0;
   color: #4F727F;
 }
+
+/* Alert pop up*/
+#alert-message {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  z-index: 9999;
+  background-color: RGBA(129,88,108,.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease-out;
+  opacity: 1;
+}
+.close-button{
+  position: absolute;
+  top:10px;
+  right: 10px;
+  text-align: center;
+  line-height: 50px;
+  width: 50px;
+  height:50px;
+  cursor: pointer; cursor: hand;
+  color: RGBA(129,88,108,1);
+}
+.alertcontent{
+  transition: all 0.3s ease-out;
+  width: 80%;
+  max-width: 400px;
+  position: relative;
+  padding: 40px;
+  background-color: #ffffff;
+  opacity: 1;
+  transform: scale(1);
+   -webkit-border-radius: 0px;
+  -moz-border-radius: 0px;
+  border-radius: 0px;
+  -webkit-box-shadow: 0px 22px 63px 0px rgba(0,0,0,0.26);
+-moz-box-shadow: 0px 22px 63px 0px rgba(0,0,0,0.26);
+box-shadow: 0px 22px 63px 0px rgba(0,0,0,0.26);
+}
+.alertcontent h3{
+  color: #67919e;
+  font-size: 1.8rem;
+  margin: 0;
+}
+.alertcontent p{
+  color: #666666;
+}
+#alert-message.close{
+  opacity: 0;
+  visibility: hidden;
+}
+#alert-message.close .alertcontent{
+  opacity: 0;
+  transform: scale(1.3);
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
+  padding:100px;
+}
+
+/* End Alert pop up*/
 #splashscreen {
   background: #67919e;
   padding: 40px;

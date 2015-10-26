@@ -20,13 +20,13 @@
         return false;
       };
     </script>
-	<div id="alert-message" class="close" onclick="CloseAlert()">
-		<div class="alertcontent">
+  <div id="alert-message" class="close" onclick="CloseAlert()">
+    <div class="alertcontent">
           <div id="close-alert" class="close-button">&#x2715;</div>
           <h3 id="alert-title">Title</h3>
           <p id="alert-description">Something wrong.<p>
         </div>
-	</div>
+  </div>
     <div id="server-status">
       <div class="data-status">
         <div id="app-path"></div>
@@ -83,19 +83,19 @@
         html += '</span>';
         return html;
       }
-	  
-	  function OpenAlert(title,description){
-	  	var popup = document.getElementById('alert-message');
-	  	document.getElementById('alert-title').innerHTML =  title;
-	  	document.getElementById('alert-description').innerHTML =  description;
-	  	
-	  	popup.classList.remove('close');
-	  }
-	  function CloseAlert(){
-	  	var popup = document.getElementById('alert-message');
-	  	popup.classList.add('close');
-	  }
-	  
+
+    function OpenAlert(title,description){
+      var popup = document.getElementById('alert-message');
+      document.getElementById('alert-title').innerHTML =  title;
+      document.getElementById('alert-description').innerHTML =  description;
+
+      popup.classList.remove('close');
+    }
+    function CloseAlert(){
+      var popup = document.getElementById('alert-message');
+      popup.classList.add('close');
+    }
+
       function startAppServer(file) {
         appPath = path.resolve(process.cwd(), file || "");
 

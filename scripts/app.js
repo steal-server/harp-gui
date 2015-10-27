@@ -107,4 +107,8 @@
     });
   }
 
+  document.getElementById('alert-message').onclick = function() {
+    closeAlert();
+  }
+
 }());

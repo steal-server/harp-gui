@@ -93,6 +93,7 @@ h1 {
 }
 #splashscreen .container {
   text-align: center;
+  z-index: 400;
 }
 #splashscreen img {
   width: 100px;
@@ -261,21 +262,20 @@ body.server-on #splashscreen h1, body.server-on #splashscreen .label {
 .footerbar {
   position: absolute;
   bottom: 0;
+  left: 0;
   width: 100%;
   z-index: 300;
+  text-transform: uppercase;
+  font-size: 11px;
+  font-weight: bold;
+  padding: 15px;
+  color: #82a4ae;
 }
 .left {
   float: left;
 }
 .right {
   float: right;
-}
-.footerbar {
-  text-transform: uppercase;
-  font-size: 11px;
-  font-weight: bold;
-  padding: 15px;
-  color: #82a4ae;
 }
 .footerbar a {
   color: #4F727F;

@@ -20,19 +20,22 @@
         return false;
       };
     </script>
-  <div id="alert-message" class="close" onclick="CloseAlert()">
-    <div class="alertcontent">
-          <div id="close-alert" class="close-button">&#x2715;</div>
-          <h3 id="alert-title">Title</h3>
-          <p id="alert-description">Something wrong.<p>
-        </div>
-  </div>
+    <div id="alert-message" class="close" onclick="CloseAlert()">
+         <div class="alertcontent">
+         <div id="close-alert" class="close-button">&#x2715;</div>
+         <h3 id="alert-title">Title</h3>
+        <p id="alert-description">Something wrong.<p>
+      </div>
+    </div>
     <div id="server-status">
       <div class="data-status">
         <div id="app-path"></div>
         <div class="visual">
           <div class="bluline"></div>
-          <img class="folderopen" src="images/open-folder.svg">
+          <div id="folder" class="folder">
+            <img class="folderback" src="images/open-folder-back.svg">
+            <img class="folderfront" src="images/open-folder-front.svg">
+          </div>
         </div>
         <div class="info">
           <div class="title">Your server is listening at</div>
@@ -95,7 +98,14 @@
       var popup = document.getElementById('alert-message');
       popup.classList.add('close');
     }
-
+    function StopCompileLoading(){
+      var folder = document.getElementById('server-status');
+      folder.classList.remove('loading');
+    }
+    function StarCompileLoading(){
+      var folder = document.getElementById('server-status');
+      folder.classList.add('loading');
+    }
       function startAppServer(file) {
         appPath = path.resolve(process.cwd(), file || "");
 
@@ -147,9 +157,11 @@
       };
 
       document.getElementById('build-app').onclick = function() {
+        StarCompileLoading();
         var outPath = path.resolve(appPath, '_build');
         harp.compile(appPath, outPath, function() {
           shell.openItem(outPath);
+          StopCompileLoading();
         });
       }
     </script>

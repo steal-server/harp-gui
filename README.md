@@ -1,7 +1,7 @@
 Harp GUI
 ========
 
-Harp GUI is a cross-platform desktop app that lets you easily start a [Harp](http://harpjs.com/) server for local development.
+Harp GUI is a cross-platform desktop app that lets you easily start a [Harp](http://harpjs.com/) server for local development. [Video of Harp GUI in action](https://www.youtube.com/watch?v=EsCQwyWNXS8).
 
 ![Start Screen](http://i.imgur.com/iE7Iidz.png)
 ![Server Running](http://i.imgur.com/0xumhhJ.png)

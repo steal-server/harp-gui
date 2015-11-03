@@ -47,7 +47,8 @@
 
   function startAppServer(file) {
     appPath = path.resolve(process.cwd(), file || "");
-
+    document.getElementById('server-status').classList.add('changefolder');
+    setTimeout(function(){ document.getElementById('server-status').classList.remove('changefolder'); }, 2000);
     if (server !== null)
       server.destroy();
     harp.server(appPath, {

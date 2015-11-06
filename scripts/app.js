@@ -47,8 +47,12 @@
 
   function startAppServer(file) {
     appPath = path.resolve(process.cwd(), file || "");
-    document.getElementById('server-status').classList.add('changefolder');
+    if (document.getElementById('app-path').innerHTML != ''){
+      document.getElementById('server-status').classList.add('changefolder');
+    }
+    document.getElementById('bluline').classList.add('hide');
     setTimeout(function(){ document.getElementById('server-status').classList.remove('changefolder'); }, 2000);
+    setTimeout(function(){ document.getElementById('bluline').classList.remove('hide'); }, 3000);
     if (server !== null)
       server.destroy();
     harp.server(appPath, {

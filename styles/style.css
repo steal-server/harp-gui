@@ -265,7 +265,7 @@ body.server-on #splashscreen h1, body.server-on #splashscreen .label {
   animation: dataanimation 5s infinite ease-in;
   z-index: 100;
 }
-.loading .bluline,.changefolder .bluline{
+.loading .bluline,.bluline.hide{
   opacity: 0;
 }
 .footerbar {

@@ -25,7 +25,7 @@ app.on('ready', function() {
   //mainWindow.setMenu(null);
 
   // and load the index.html of the app.
-  mainWindow.loadUrl('file://' + __dirname + '/views/index.html');
+  mainWindow.loadUrl('file://' + __dirname + '/views/app.html');
 
   // Emitted when the window is closed.
   mainWindow.on('closed', function() {

@@ -13,6 +13,10 @@
   var appPath = '';
   var port = 0;
 
+  /*
+    Takes a path name like `/home/me/myproject` and returns an HTML version
+    where the last path segment is denoted for styling.
+  */
   function highlightLastPathDirectory(filename) {
     var i = filename.lastIndexOf(path.sep) + 1;
     var html = filename.substring(0, i);
@@ -22,7 +26,11 @@
     return html;
   }
 
-  function openAlert(title,description) {
+  /*
+    Spawns a global app alert that covers the whole screen and prevents
+    other actions until it's closed.
+  */
+  function openAlert(title, description) {
     var popup = document.getElementById('alert-message');
     document.getElementById('alert-title').innerHTML =  title;
     document.getElementById('alert-description').innerHTML =  description;
@@ -30,21 +38,33 @@
     popup.classList.remove('close');
   }
 
+  /*
+    Closes an open alert.
+  */
   function closeAlert() {
     var popup = document.getElementById('alert-message');
     popup.classList.add('close');
   }
 
-  function stopCompileLoading() {
-    var folder = document.getElementById('server-status');
-    folder.classList.remove('loading');
-  }
-
+  /*
+    Called when an app starts compiling.
+  */
   function startCompileLoading() {
     var folder = document.getElementById('server-status');
     folder.classList.add('loading');
   }
 
+  /*
+    Called when an app finishes compiling.
+  */
+  function stopCompileLoading() {
+    var folder = document.getElementById('server-status');
+    folder.classList.remove('loading');
+  }
+
+  /*
+    Starts a new Harp server for the given app path.
+  */
   function startAppServer(file) {
     appPath = path.resolve(process.cwd(), file || "");
     if (document.getElementById('app-path').innerHTML != ''){

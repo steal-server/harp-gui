@@ -18,31 +18,33 @@ h1 {
   margin: 0 0 40px 0;
   color: #4F727F;
 }
+
 /* Alert pop up*/
 #alert-message {
   position: absolute;
   height: 100%;
   width: 100%;
   z-index: 9999;
-  background-color: RGBA(129,88,108,.6);
+  background-color: RGBA(129, 88, 108, .6);
   display: flex;
   align-items: center;
   justify-content: center;
   transition: all 0.3s ease-out;
   opacity: 1;
 }
-.close-button{
+.close-button {
   position: absolute;
-  top:10px;
+  top: 10px;
   right: 10px;
   text-align: center;
   line-height: 50px;
   width: 50px;
-  height:50px;
-  cursor: pointer; cursor: hand;
-  color: RGBA(129,88,108,1);
+  height: 50px;
+  cursor: pointer;
+  cursor: hand;
+  color: RGBA(129, 88, 108, 1);
 }
-.alertcontent{
+.alertcontent {
   transition: all 0.3s ease-out;
   width: 80%;
   max-width: 400px;
@@ -51,35 +53,35 @@ h1 {
   background-color: #ffffff;
   opacity: 1;
   transform: scale(1);
-   -webkit-border-radius: 0px;
+  -webkit-border-radius: 0px;
   -moz-border-radius: 0px;
   border-radius: 0px;
-  -webkit-box-shadow: 0px 22px 63px 0px rgba(0,0,0,0.26);
-  -moz-box-shadow: 0px 22px 63px 0px rgba(0,0,0,0.26);
-  box-shadow: 0px 22px 63px 0px rgba(0,0,0,0.26);
+  -webkit-box-shadow: 0px 22px 63px 0px rgba(0, 0, 0, 0.26);
+  -moz-box-shadow: 0px 22px 63px 0px rgba(0, 0, 0, 0.26);
+  box-shadow: 0px 22px 63px 0px rgba(0, 0, 0, 0.26);
 }
-.alertcontent h3{
+.alertcontent h3 {
   color: #67919e;
   font-size: 1.8rem;
   margin: 0;
 }
-.alertcontent p{
+.alertcontent p {
   color: #666666;
 }
-#alert-message.close{
+#alert-message.close {
   opacity: 0;
   visibility: hidden;
 }
-#alert-message.close .alertcontent{
+#alert-message.close .alertcontent {
   opacity: 0;
   transform: scale(1.3);
   -webkit-border-radius: 50%;
   -moz-border-radius: 50%;
   border-radius: 50%;
-  padding:100px;
+  padding: 100px;
 }
-
 /* End Alert pop up*/
+
 #splashscreen {
   background: #67919e;
   padding: 40px;
@@ -107,8 +109,8 @@ h1 {
   align-items: center;
   justify-content: center;
 }
-#server-status.loading,#server-status.changefolder{
-  background-color: RGBA(0,0,0,.2);
+#server-status.loading, #server-status.changefolder {
+  background-color: RGBA(0, 0, 0, .2);
 }
 #server-status .data-status {
   width: 100%;
@@ -165,14 +167,14 @@ body.server-on #splashscreen h1, body.server-on #splashscreen .label {
   display: none;
 }
 #app-path {
-  color: RGBA(255,255,255,.3);
+  color: RGBA(255, 255, 255, .3);
   font-size: 20px;
   padding: 20px;
 }
 #app-path .highlighted {
-  color: RGBA(255,255,255,.6);
+  color: RGBA(255, 255, 255, .6);
 }
-.server-on .changefolder #app-path,.server-on .changefolder #app-path .highlighted{
+.server-on .changefolder #app-path, .server-on .changefolder #app-path .highlighted {
   animation: colorblink .5s infinite ease-in;
 }
 #server-status .title {
@@ -200,7 +202,7 @@ body.server-on #splashscreen h1, body.server-on #splashscreen .label {
   border-radius: 4px;
   margin: 10px;
   padding: 15px;
-  color: RGBA(0,0,0,.2);
+  color: RGBA(0, 0, 0, .2);
   text-decoration: none;
   display: inline-block;
   cursor: pointer;
@@ -211,9 +213,9 @@ body.server-on #splashscreen h1, body.server-on #splashscreen .label {
   background: #83596C;
   box-shadow: 0px 5px 0px #654352;
 }
-.button:hover,#launch:hover{
-  color: RGBA(0,0,0,.6);
-  box-shadow: 0px 1px 0px RGBA(0,0,0,.2);
+.button:hover, #launch:hover {
+  color: RGBA(0, 0, 0, .6);
+  box-shadow: 0px 1px 0px RGBA(0, 0, 0, .2);
 }
 .visual {
   width: 100%;
@@ -222,7 +224,7 @@ body.server-on #splashscreen h1, body.server-on #splashscreen .label {
   background-repeat: no-repeat;
   position: relative;
 }
-.folder{
+.folder {
   position: relative;
   display: inline-block;
   z-index: 101;
@@ -247,12 +249,14 @@ body.server-on #splashscreen h1, body.server-on #splashscreen .label {
   transform: skewX(-10deg);
   transition: all 0.5s ease-in-out;
 }
+
 /* loading compile */
+
 .loading .folderfront {
   margin-left: -60px;
   transform: skewX(-0deg);
 }
-.loading .folder{
+.loading .folder {
   animation: loadingcompile .5s infinite linear;
 }
 .bluline {
@@ -265,7 +269,7 @@ body.server-on #splashscreen h1, body.server-on #splashscreen .label {
   animation: dataanimation 5s infinite ease-in;
   z-index: 100;
 }
-.loading .bluline,.bluline.hide{
+.loading .bluline, .bluline.hide {
   opacity: 0;
 }
 .footerbar {
@@ -331,13 +335,13 @@ body.server-on #splashscreen h1, body.server-on #splashscreen .label {
 }
 @keyframes colorblink {
   0% {
-    color: RGBA(255,255,255,.3);
+    color: RGBA(255, 255, 255, .3);
   }
   50% {
-    color: RGBA(255,255,255,1);
+    color: RGBA(255, 255, 255, 1);
   }
   100% {
-    color: RGBA(255,255,255,.3);
+    color: RGBA(255, 255, 255, .3);
   }
 }
 @keyframes dataanimation {

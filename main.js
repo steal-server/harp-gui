@@ -22,7 +22,7 @@ app.on('window-all-closed', function() {
 app.on('ready', function() {
   // Create the browser window.
   mainWindow = new BrowserWindow({width: 580, height: 500, "auto-hide-menu-bar": true});
-  //mainWindow.setMenu(null);
+  mainWindow.setMenu(null);
 
   // and load the index.html of the app.
   mainWindow.loadUrl('file://' + __dirname + '/views/app.html');

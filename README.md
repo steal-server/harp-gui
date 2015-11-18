@@ -9,20 +9,26 @@ Harp GUI is a cross-platform desktop app that lets you easily start a [Harp](htt
 Contributing
 ============
 
-Harp GUI is written using web technologies and distributed with [Electron](http://electron.atom.io/docs/). To get up and running, ensure Node.js and npm are installed (and updated to the latest version), then install Electron with:
+Harp GUI is written using web technologies and distributed with [Electron](http://electron.atom.io/docs/). To get up and running, ensure Node.js and npm are installed, then install Electron with:
 
     npm install electron-prebuilt -g
 
-then, while inside of this project folder, run:
+If you get errors, run the command with `sudo`.
+
+The next part is a little tricky. You need to ensure that before you run the next command, you're using the same version of Node that Electron uses internally. To check that, scroll to the bottom of [electron.atom.io](http://electron.atom.io/) under the "Get started with Electron" section. Check your Node version with `node -v` and compare it to the website. If you're using a different major version, consider using [n](https://www.npmjs.com/package/n) or [nvm](https://github.com/creationix/nvm) to switch to Electron's version temporarily. Once that's settled, run:
 
     npm install
 
-to install the project dependencies. Now just run `electron .` in this directory to start the app.
+This installs the project dependencies. One of those, `node-sass`, needs to be compiled for your platform with the proper version of Node. This is why the previous step was needed, and you can now safely switch back to any version of Node.
+
+Finally, run `electron .` in this directory to start the app.
 
 Debugging
 ---------
 
-Like Chrome, you can use the keyboard shortcut shift+ctrl+i to bring up an inspector. You can use the javascript console to view errors and debug code. See the [Electron docs](http://electron.atom.io/docs/) for info about how Electron works.
+Like Chrome, you can use the keyboard shortcut `shift + ctrl + I` to bring up an inspector.
+
+You can use the javascript console to view errors and debug code. See the [Electron docs](http://electron.atom.io/docs/) for info about how Electron works.
 
 License
 =======

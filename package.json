@@ -1,6 +1,6 @@
 {
   "name": "harp-gui",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Static web server utility for front-end development.",
   "main": "main.js",
   "repository": "https://github.com/alexgleason/harp-gui",

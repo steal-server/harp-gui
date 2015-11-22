@@ -6,6 +6,32 @@ Harp GUI is a cross-platform desktop app that lets you easily start a [Harp](htt
 ![Start Screen](http://i.imgur.com/iE7Iidz.png)
 ![Server Running](http://i.imgur.com/0xumhhJ.png)
 
+Installing
+==========
+
+Follow these steps to install Harp GUI.
+
+Linux
+-----
+
+Run the following commands in your terminal:
+
+    sudo apt-add-repository "deb https://packagecloud.io/alexgleason/harp-gui/debian/ jessie main"
+    sudo apt-get update
+    sudo apt-get install harp-gui
+
+This will work with Ubuntu, Linux Mint, elementary OS, Debian, and any Debian-based system that uses apt-get.
+
+Other Linux distributions may be supported in the future. In the meantime, you can run Harp GUI by following the steps in the Contributing section.
+
+Mac
+---
+TBD, preparing release.
+
+Windows
+-------
+TBD, desired but not yet planned.
+
 Contributing
 ============
 

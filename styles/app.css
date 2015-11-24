@@ -2,7 +2,7 @@
   box-sizing: border-box;
 }
 html {
-  background: #3E5E6B;
+  background: #546D7A;
 }
 html, body {
   width: 100%;
@@ -13,10 +13,10 @@ html, body {
 body {
   display: flex;
   flex-direction: column;
+  background: #6B919E;
 }
-h1 {
-  margin: 0 0 40px 0;
-  color: #4F727F;
+body.server-on{
+  background: #546D7A;
 }
 
 /* Alert pop up*/
@@ -83,7 +83,10 @@ h1 {
 /* End Alert pop up*/
 
 #splashscreen {
-  background: #67919e;
+  position: absolute;
+  top:0;
+  left:0;
+  background: transparent;
   padding: 40px;
   width: 100%;
   min-height: 100%;
@@ -96,18 +99,26 @@ h1 {
 #splashscreen .container {
   text-align: center;
   z-index: 400;
+  margin-top: -105px;
 }
 #splashscreen img {
   width: 100px;
 }
 #server-status {
-  min-height: 0%;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  flex: 1;
+  display: flex;
+  top: 0;
+  left:0;
   transition: all 1s ease-in-out;
   overflow: hidden;
   text-align: center;
-  width: 100%;
   align-items: center;
   justify-content: center;
+  z-index: 300;
+  pointer-events: none;
 }
 #server-status.loading, #server-status.changefolder {
   background-color: RGBA(0, 0, 0, .2);
@@ -115,7 +126,7 @@ h1 {
 #server-status .data-status {
   width: 100%;
 }
-#holder {
+.square-holder {
   width: 190px;
   height: 190px;
   margin: 0 auto;
@@ -129,47 +140,38 @@ h1 {
   background-repeat: repeat-x, repeat-x, repeat-y, repeat-y;
   background-size: 16px 4px, 16px 4px, 4px 16px, 4px 16px;
   background-position: 0px 0px, 186px 186px, 0px 186px, 186px 0px;
-  animation: entopacity 2s 1;
+  animation: entopacity 2s;
   cursor: pointer;
 }
-#holder.hover {
+.hover .square-holder,body.server-on .hover .square-holder{
   animation: border-dance 6s infinite linear;
+  opacity: 1;
 }
-.label {
-  color: #3E575F;
-  margin: 40px 0;
-}
-#holder img {
+
+.square-holder img {
   animation: entrance 1s 1;
 }
+body.server-on .square-holder{
+  opacity: 0;
+}
 body.server-on #server-status {
-  flex: 1;
-  display: flex;
 }
 body.server-on #splashscreen {
   padding: 20px;
-  min-height: 0;
-  height: auto;
   animation: elasticborder 1s 1;
-}
-body.server-on #holder {
-  width: 80px;
-  height: 80px;
-  background-position: 0px 0px, 76px 76px, 0px 76px, 76px 0px;
-}
-body.server-on #holder.hover {
-  animation: border-dance-small 6s infinite linear;
-}
-body.server-on #splashscreen img {
-  width: 50px;
-}
-body.server-on #splashscreen h1, body.server-on #splashscreen .label {
-  display: none;
 }
 #app-path {
   color: RGBA(255, 255, 255, .3);
-  font-size: 20px;
   padding: 20px;
+  height: 100px;
+}
+#app-path small{
+
+}
+#app-path h1{
+  margin: 0;
+  margin-top: 10px;
+  color: #4F727F;
 }
 #app-path .highlighted {
   color: RGBA(255, 255, 255, .6);
@@ -178,22 +180,29 @@ body.server-on #splashscreen h1, body.server-on #splashscreen .label {
   animation: colorblink .5s infinite ease-in;
 }
 #server-status .title {
-  color: #67919E;
   text-transform: uppercase;
   font-size: 10px;
 }
-#server-url a {
-  color: white;
+.info{
+  margin-top: 25px;
+  padding: 20px;
+  height: 100px;
+  color: #D3DEE1;
+}
+#server-url a, #server-url {
+  color: #D3DEE1;
   font-size: 24px;
   text-decoration: none;
-  display: inline-block;
   padding: 10px;
+  pointer-events: auto;
 }
 #server-url a:hover {
-  color: white;
+  color: #D3DEE1;
 }
+
 .controls {
-  margin: 20px;
+  color: #3E575F;
+  margin: 0px 20px;
   height: 80px;
 }
 .button {
@@ -204,10 +213,14 @@ body.server-on #splashscreen h1, body.server-on #splashscreen .label {
   padding: 15px;
   color: RGBA(0, 0, 0, .2);
   text-decoration: none;
-  display: inline-block;
+  display: none;
+  pointer-events: auto;
   cursor: pointer;
   box-shadow: 0px 5px 0px #3A5158;
   transition: all .2s ease-in-out;
+}
+.server-on .button {
+  display: inline-block;
 }
 #launch {
   background: #83596C;
@@ -219,13 +232,36 @@ body.server-on #splashscreen h1, body.server-on #splashscreen .label {
 }
 .visual {
   width: 100%;
-  background-image: url('../images/wave.svg');
-  background-size: 100% 100%;
-  background-repeat: no-repeat;
   position: relative;
+  height: 190px;
+}
+#wave{
+  position: absolute;
+  top: 7px;
+  left: 50%;
+}
+.visual:before{
+  position: absolute;
+  content: "\00a0 ";
+  background-color: #ffffff;
+  height: 4px;
+  width: 50%;
+  left: 0;
+  top: 50%;
+}
+.visual:after{
+  position: absolute;
+  content: "\00a0 ";
+  background-color: #ffffff;
+  height: 4px;
+  width: 50%;
+  left: 50%;
+  top: 50%;
+  margin-left: 299px;
 }
 .folder {
   position: relative;
+  margin-top: 30px;
   display: inline-block;
   z-index: 101;
   transition: all .5s ease-in-out;
@@ -245,13 +281,16 @@ body.server-on #splashscreen h1, body.server-on #splashscreen .label {
   z-index: 101;
   left: 50%;
   top: 0;
+  transition: all 0.5s ease-in-out;
+  margin-left: -60px;
+  transform: skewX(-0deg);
+}
+.server-on .folder .folderfront{
   margin-left: -54px;
   transform: skewX(-10deg);
-  transition: all 0.5s ease-in-out;
 }
 
 /* loading compile */
-
 .loading .folderfront {
   margin-left: -60px;
   transform: skewX(-0deg);
@@ -259,25 +298,13 @@ body.server-on #splashscreen h1, body.server-on #splashscreen .label {
 .loading .folder {
   animation: loadingcompile .5s infinite linear;
 }
-.bluline {
-  top: 0;
-  left: 0;
-  position: absolute;
-  width: 5px;
-  height: 100%;
-  background: #3E5E6B;
-  animation: dataanimation 5s infinite ease-in;
-  z-index: 100;
-}
-.loading .bluline, .bluline.hide {
-  opacity: 0;
-}
+/* FOOTER */
 .footerbar {
   position: absolute;
   bottom: 0;
   left: 0;
   width: 100%;
-  z-index: 300;
+  z-index: 999;
   text-transform: uppercase;
   font-size: 11px;
   font-weight: bold;
@@ -291,12 +318,12 @@ body.server-on #splashscreen h1, body.server-on #splashscreen .label {
   float: right;
 }
 .footerbar a {
-  color: #4F727F;
+  color: #D3DEE1;
   text-decoration: none;
   padding: 5px;
 }
 .footerbar a:hover {
-  color: #3E575F;
+  color: #FCFCFC;
 }
 @keyframes border-dance {
   0% {

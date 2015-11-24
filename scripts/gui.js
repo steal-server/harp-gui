@@ -6,10 +6,12 @@ var path = require("path")
 */
 function highlightLastPathDirectory(filename) {
   var i = filename.lastIndexOf(path.sep) + 1
-  var html = filename.substring(0, i)
-  html += '<span class="highlighted">'
+  var html = '<small>'
+  html += filename
+  html += '</small>'
+  html += '<h1 class="highlighted">'
   html += filename.substring(i, filename.length)
-  html += '</span>'
+  html += '</h1>'
   return html
 }
 
@@ -55,10 +57,8 @@ exports.stopCompileLoading = function() {
 exports.changeFolder = function() {
   if (document.getElementById('app-path').innerHTML != '') {
     document.getElementById('server-status').classList.add('changefolder')
-    document.getElementById('bluline').classList.add('hide')
   }
   setTimeout(function() { document.getElementById('server-status').classList.remove('changefolder') }, 2000)
-  setTimeout(function() { document.getElementById('bluline').classList.remove('hide') }, 3000)
 }
 
 /*
@@ -67,6 +67,7 @@ exports.changeFolder = function() {
 exports.serverStarted = function(server) {
   var url = "http://localhost:" + server.address().port + "/"
   document.getElementById('app-path').innerHTML = highlightLastPathDirectory(server.appPath)
+  document.getElementById('infotitle').innerHTML = 'Your server is listening at'
   document.getElementById('launch').href = url
   document.getElementById('server-url').innerHTML = '<a href="' + url + '">' + url + '</a>'
   document.body.className = 'server-on'

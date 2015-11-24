@@ -16,17 +16,17 @@
     </div>
     <div id="server-status">
       <div class="data-status">
-        <div id="app-path"></div>
+        <div id="app-path"><small>To start the server</small><h1>Drag your folder or click to the icon</h1></div>
         <div class="visual">
-          <div id="bluline" class="bluline"></div>
+          <div id="wave" class="wavecontainer"></div>
           <div id="folder" class="folder">
             <img class="folderback" src="../images/open-folder-back.svg">
             <img class="folderfront" src="../images/open-folder-front.svg">
           </div>
         </div>
         <div class="info">
-          <div class="title">Your server is listening at</div>
-          <div id="server-url"></div>
+          <div id="infotitle" class="title">No folder is selected</div>
+          <div id="server-url">Server is not running</div>
         </div>
         <div class="controls">
           <a id="launch" class="button">View in Browser</a>
@@ -37,22 +37,19 @@
 
     <div id="splashscreen">
       <div class="container">
-        <h1>Server is not running</h1>
-        <div id="holder">
-          <img src="../images/drag-folder.svg">
+        <div id="holder" class="square-holder">
         </div>
-        <div class="label">Drag a Harp app folder here to get started.</div>
       </div>
-      <footer class="footerbar">
-        <div class="left">
-          <a href="http://harpjs.com/faq">FAQ</a> | <a href="https://github.com/alexgleason/harp-gui">GitHub</a>
-        </div>
-        <div class="right">
-          <a href="http://harpjs.com/">About Harp</a>
-        </div>
-      </footer>
     </div>
 
+    <footer class="footerbar">
+      <div class="left">
+        <a href="http://harpjs.com/faq">FAQ</a> | <a href="https://github.com/alexgleason/harp-gui">GitHub</a>
+      </div>
+      <div class="right">
+        <a href="http://harpjs.com/">About Harp</a>
+      </div>
+    </footer>
     <script src="../scripts/app.js"></script>
   </body>
 </html>

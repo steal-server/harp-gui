@@ -30,17 +30,17 @@ exports.startWave = function(waves) {
 exports.createWave = function() {
   var waves = new SineWaves({
     el: document.getElementById('waves'),
-    speed: 35,
-    width: 300,
+    speed: 30,
+    width: 600,
     height: 180,
-    wavesWidth: '95%',
+    wavesWidth: '100%',
     ease: 'SineInOut',
     waves: [{
       timeModifier: 1,
       lineWidth: 4,
       topAmplitude: 25,
       amplitude: 0,
-      wavelength: 20
+      wavelength: 12
     }],
     initialize: function() {},
     resizeEvent: function() {

@@ -15,11 +15,12 @@ body {
   flex-direction: column;
   background: #6B919E;
 }
-body.server-on{
+body.server-on {
   background: #546D7A;
 }
 
 /* Alert pop up*/
+
 #alert-message {
   position: absolute;
   height: 100%;
@@ -80,12 +81,13 @@ body.server-on{
   border-radius: 50%;
   padding: 100px;
 }
+
 /* End Alert pop up*/
 
 #splashscreen {
   position: absolute;
-  top:0;
-  left:0;
+  top: 0;
+  left: 0;
   background: transparent;
   padding: 40px;
   width: 100%;
@@ -111,7 +113,7 @@ body.server-on{
   flex: 1;
   display: flex;
   top: 0;
-  left:0;
+  left: 0;
   transition: all 1s ease-in-out;
   overflow: hidden;
   text-align: center;
@@ -143,19 +145,17 @@ body.server-on{
   animation: entopacity 2s;
   cursor: pointer;
 }
-.hover .square-holder,body.server-on .hover .square-holder{
+.hover .square-holder, body.server-on .hover .square-holder {
   animation: border-dance 6s infinite linear;
   opacity: 1;
 }
-
 .square-holder img {
   animation: entrance 1s 1;
 }
-body.server-on .square-holder{
+body.server-on .square-holder {
   opacity: 0;
 }
-body.server-on #server-status {
-}
+body.server-on #server-status {}
 body.server-on #splashscreen {
   padding: 20px;
   animation: elasticborder 1s 1;
@@ -165,10 +165,8 @@ body.server-on #splashscreen {
   padding: 20px;
   height: 100px;
 }
-#app-path small{
-
-}
-#app-path h1{
+#app-path small {}
+#app-path h1 {
   margin: 0;
   margin-top: 10px;
   color: #4F727F;
@@ -183,7 +181,7 @@ body.server-on #splashscreen {
   text-transform: uppercase;
   font-size: 10px;
 }
-.info{
+.info {
   margin-top: 25px;
   padding: 20px;
   height: 100px;
@@ -199,7 +197,6 @@ body.server-on #splashscreen {
 #server-url a:hover {
   color: #D3DEE1;
 }
-
 .controls {
   color: #3E575F;
   margin: 0px 20px;
@@ -235,12 +232,12 @@ body.server-on #splashscreen {
   position: relative;
   height: 190px;
 }
-#waves{
+#waves {
   position: absolute;
   top: 7px;
   left: 50%;
 }
-.visual:before{
+.visual:before {
   position: absolute;
   content: "\00a0 ";
   background-color: #ffffff;
@@ -249,7 +246,7 @@ body.server-on #splashscreen {
   left: 0;
   top: 50%;
 }
-.visual:after{
+.visual:after {
   position: absolute;
   content: "\00a0 ";
   background-color: #ffffff;
@@ -257,7 +254,7 @@ body.server-on #splashscreen {
   width: 50%;
   left: 50%;
   top: 50%;
-  margin-left: 299px;
+  margin-left: 600px;
 }
 .folder {
   position: relative;
@@ -285,12 +282,13 @@ body.server-on #splashscreen {
   margin-left: -60px;
   transform: skewX(-0deg);
 }
-.server-on .folder .folderfront{
+.server-on .folder .folderfront {
   margin-left: -54px;
   transform: skewX(-10deg);
 }
 
 /* loading compile */
+
 .loading .folderfront {
   margin-left: -60px;
   transform: skewX(-0deg);
@@ -298,7 +296,9 @@ body.server-on #splashscreen {
 .loading .folder {
   animation: loadingcompile .5s infinite linear;
 }
+
 /* FOOTER */
+
 .footerbar {
   position: absolute;
   bottom: 0;

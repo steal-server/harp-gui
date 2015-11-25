@@ -31,16 +31,14 @@ exports.createWave = function() {
   var waves = new SineWaves({
     el: document.getElementById('waves'),
     speed: 30,
-    width: 600,
-    height: 180,
     wavesWidth: '100%',
-    ease: 'SineInOut',
+    ease: 'SineIn',
     waves: [{
       timeModifier: 1,
       lineWidth: 4,
-      topAmplitude: 25,
+      topAmplitude: 30,
       amplitude: 0,
-      wavelength: 12
+      wavelength: 10
     }],
     initialize: function() {},
     resizeEvent: function() {

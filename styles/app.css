@@ -236,6 +236,8 @@ body.server-on #splashscreen {
   position: absolute;
   top: 7px;
   left: 50%;
+  width: 55% !important;
+  height: 180px !important;
 }
 .visual:before {
   position: absolute;
@@ -245,16 +247,6 @@ body.server-on #splashscreen {
   width: 50%;
   left: 0;
   top: 50%;
-}
-.visual:after {
-  position: absolute;
-  content: "\00a0 ";
-  background-color: #ffffff;
-  height: 4px;
-  width: 50%;
-  left: 50%;
-  top: 50%;
-  margin-left: 600px;
 }
 .folder {
   position: relative;

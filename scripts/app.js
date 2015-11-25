@@ -7,15 +7,15 @@
   var shell = remote.require("shell")
   var enableDestroy = require("server-destroy")
   var dialog = remote.require("dialog")
-  var wave = require("../scripts/wave.js")
+  var waves = require("../scripts/waves.js")
   var gui = require("../scripts/gui.js")
 
-  var holder = document.getElementById("splashscreen")
-  var holderfolder = document.getElementById('holder')
+  var foldericon = document.getElementById("holder")
+
+  var wave = waves.createWave()
 
   var server
 
-  wave.CreateWave()
   /*
     Starts a new Harp server for the given app path.
   */
@@ -42,11 +42,11 @@
         server.appPath = appPath
         enableDestroy(server)
         gui.serverStarted(server)
-        wave.StartWave()
+        waves.startWave(wave)
       })
   }
 
-  holderfolder.onclick = function() {
+  foldericon.onclick = function() {
     dialog.showOpenDialog({
       title: 'Choose an app folder',
       properties: [ 'openDirectory' ]
@@ -57,20 +57,20 @@
     })
   }
 
-  holder.ondragover = function() {
+  document.ondragover = function() {
     this.className = 'hover'
-    wave.StopWave()
+    waves.stopWave(wave)
     return false
   }
 
-  holder.ondragleave = holder.ondragend = function() {
+  document.ondragleave = holder.ondragend = function() {
     this.className = ''
-    wave.StartWave()
+    waves.startWave(wave)
     return false
   }
 
-  holder.ondrop = function(e) {
-    wave.StopWave()
+  document.ondrop = function(e) {
+    waves.stopWave(wave)
     this.className = ''
     e.preventDefault()
     var file = e.dataTransfer.files[0].path

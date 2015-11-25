@@ -18,7 +18,9 @@
       <div class="data-status">
         <div id="app-path"><small>To start the server</small><h1>Drag your folder or click to the icon</h1></div>
         <div class="visual">
-          <div id="wave" class="wavecontainer"></div>
+          <div class="wavecontainer">
+            <canvas id="waves"></canvas>
+          </div>
           <div id="folder" class="folder">
             <img class="folderback" src="../images/open-folder-back.svg">
             <img class="folderfront" src="../images/open-folder-front.svg">
@@ -50,6 +52,7 @@
         <a href="http://harpjs.com/">About Harp</a>
       </div>
     </footer>
+    <script src="../node_modules/sine-waves/sine-waves.js"></script>
     <script src="../scripts/app.js"></script>
   </body>
 </html>

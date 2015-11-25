@@ -36,6 +36,7 @@ exports.createWave = function() {
     waves: [{
       timeModifier: 1,
       lineWidth: 4,
+      segmentLength: 1,
       topAmplitude: 30,
       amplitude: 0,
       wavelength: 10

@@ -21,7 +21,7 @@ app.on('window-all-closed', function() {
 // initialization and is ready to create browser windows.
 app.on('ready', function() {
   // Create the browser window.
-  mainWindow = new BrowserWindow({width: 580, height: 500, "auto-hide-menu-bar": true})
+  mainWindow = new BrowserWindow({width: 620, height: 500, "auto-hide-menu-bar": true})
 
   // Uncomment this for a release.
   // mainWindow.setMenu(null)

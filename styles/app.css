@@ -236,7 +236,7 @@ body.server-on #splashscreen {
   position: absolute;
   top: 7px;
   left: 50%;
-  width: 55% !important;
+  width: calc(50% + 2px) !important;
   height: 180px !important;
 }
 .visual:before {

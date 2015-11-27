@@ -37,9 +37,9 @@ exports.createWave = function() {
       timeModifier: 1,
       lineWidth: 4,
       segmentLength: 1,
-      topAmplitude: 30,
+      topAmplitude: 60,
       amplitude: 0,
-      wavelength: 10
+      wavelength: 8
     }],
     initialize: function() {},
     resizeEvent: function() {

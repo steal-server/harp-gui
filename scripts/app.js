@@ -46,7 +46,17 @@
       })
   }
 
-  foldericon.onclick = function() {
+  /*
+    Detects if a mouse event happens only for the window itself
+    and not any of its child elements.
+  */
+  function onlyWindow(e) {
+    if (e.path[e.path.length - 1] == window)
+      return true
+    return false
+  }
+
+  foldericon.onclick = function(e) {
     dialog.showOpenDialog({
       title: 'Choose an app folder',
       properties: [ 'openDirectory' ]
@@ -57,21 +67,18 @@
     })
   }
 
-  document.ondragover = function() {
-    this.className = 'hover'
+  document.ondragover = function(e) {
     waves.stopWave(wave)
     return false
   }
 
-  document.ondragleave = holder.ondragend = function() {
-    this.className = ''
-    waves.startWave(wave)
+  document.ondragleave = function(e) {
+    if (e.clientX == 0 || e.clientY == 0) // The mouse has left the window
+      if (server) waves.startWave(wave)
     return false
   }
 
   document.ondrop = function(e) {
-    waves.stopWave(wave)
-    this.className = ''
     e.preventDefault()
     var file = e.dataTransfer.files[0].path
     if(!fs.lstatSync(file).isDirectory()) {
@@ -82,7 +89,7 @@
     return false
   }
 
-  document.getElementById('build-app').onclick = function() {
+  document.getElementById('build-app').onclick = function(e) {
     gui.startCompileLoading()
     var outPath = path.resolve(server.appPath, '_build')
     harp.compile(server.appPath, outPath, function() {
@@ -91,7 +98,7 @@
     })
   }
 
-  document.getElementById('alert-message').onclick = function() {
+  document.getElementById('alert-message').onclick = function(e) {
     gui.closeAlert()
   }
 

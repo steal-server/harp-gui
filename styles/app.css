@@ -101,7 +101,6 @@ body.server-on {
 #splashscreen .container {
   text-align: center;
   z-index: 400;
-  margin-top: -105px;
 }
 #splashscreen img {
   width: 100px;
@@ -128,7 +127,7 @@ body.server-on {
 #server-status .data-status {
   width: 100%;
 }
-.square-holder {
+#holder {
   width: 190px;
   height: 190px;
   margin: 0 auto;
@@ -145,15 +144,12 @@ body.server-on {
   animation: entopacity 2s;
   cursor: pointer;
 }
-.hover .square-holder, body.server-on .hover .square-holder {
+#holder.hover {
   animation: border-dance 6s infinite linear;
-  opacity: 1;
 }
-.square-holder img {
-  animation: entrance 1s 1;
-}
-body.server-on .square-holder {
+body.server-on #holder {
   opacity: 0;
+  animation: none;
 }
 body.server-on #server-status {}
 body.server-on #splashscreen {
@@ -182,9 +178,6 @@ body.server-on #splashscreen {
   font-size: 10px;
 }
 .info {
-  margin-top: 25px;
-  padding: 20px;
-  height: 100px;
   color: #D3DEE1;
 }
 #server-url a, #server-url {

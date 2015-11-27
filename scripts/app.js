@@ -10,7 +10,7 @@
   var waves = require("../scripts/waves.js")
   var gui = require("../scripts/gui.js")
 
-  var foldericon = document.getElementById("holder")
+  var holder = document.getElementById("holder")
 
   var wave = waves.createWave()
 
@@ -56,7 +56,7 @@
     return false
   }
 
-  foldericon.onclick = function(e) {
+  holder.onclick = function(e) {
     dialog.showOpenDialog({
       title: 'Choose an app folder',
       properties: [ 'openDirectory' ]
@@ -68,13 +68,16 @@
   }
 
   document.ondragover = function(e) {
+    holder.className = 'hover'
     waves.stopWave(wave)
     return false
   }
 
   document.ondragleave = function(e) {
-    if (e.clientX == 0 || e.clientY == 0) // The mouse has left the window
+    if (e.clientX == 0 || e.clientY == 0) { // The mouse has left the window
+      holder.className = ''
       if (server) waves.startWave(wave)
+    }
     return false
   }
 

@@ -46,16 +46,6 @@
       })
   }
 
-  /*
-    Detects if a mouse event happens only for the window itself
-    and not any of its child elements.
-  */
-  function onlyWindow(e) {
-    if (e.path[e.path.length - 1] == window)
-      return true
-    return false
-  }
-
   holder.onclick = function(e) {
     dialog.showOpenDialog({
       title: 'Choose an app folder',

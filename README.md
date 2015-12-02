@@ -26,7 +26,7 @@ Other Linux distributions may be supported in the future. In the meantime, you c
 
 Mac
 ---
-TBD, preparing release.
+[Harp GUI 1.0.0rc1 64-bit](https://drive.google.com/folderview?id=0BwfNEizpnybJVTVGOHZ3eDR1Y2M&usp=sharing)
 
 Windows
 -------
@@ -66,4 +66,4 @@ This software is licensed under GPLv3. See the `LICENSE` file for the complete l
 Other Notes
 ===========
 
-Mockups provided by Teto Querini. View them [here](https://drive.google.com/folderview?id=0BwfNEizpnybJVGQ4T1UxMlIwQUU&usp=sharing).
+[Mockups](https://drive.google.com/folderview?id=0BwfNEizpnybJVGQ4T1UxMlIwQUU&usp=sharing) provided by Teto Querini.

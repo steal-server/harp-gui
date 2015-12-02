@@ -66,4 +66,4 @@ This software is licensed under GPLv3. See the `LICENSE` file for the complete l
 Other Notes
 ===========
 
-Mockups provided by Teto Querini. View them [here](https://drive.google.com/folderview?id=0BwfNEizpnybJVGQ4T1UxMlIwQUU&usp=sharing).
+[Mockups](https://drive.google.com/folderview?id=0BwfNEizpnybJVGQ4T1UxMlIwQUU&usp=sharing) provided by Teto Querini.

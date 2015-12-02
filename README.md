@@ -26,7 +26,7 @@ Other Linux distributions may be supported in the future. In the meantime, you c
 
 Mac
 ---
-TBD, preparing release.
+[Harp GUI 1.0.0rc1 64-bit](https://drive.google.com/folderview?id=0BwfNEizpnybJVTVGOHZ3eDR1Y2M&usp=sharing)
 
 Windows
 -------
